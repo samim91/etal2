@@ -6,7 +6,7 @@ export function createPgBoss() {
   let pgBossNewOptions = {
     connectionString: config.databaseUrl,
     ssl: {
-      rejectUnauthorized: false,  // Ensure SSL is used (bypasses certificate validation)
+      rejectUnauthorized: false,  // Enforces SSL, but does not validate certificates
     },
   }
 
@@ -20,6 +20,8 @@ export function createPgBoss() {
       )
     }
   }
+
+  console.log('pg-boss connection options:', pgBossNewOptions)  // Log to verify
 
   return new PgBoss(pgBossNewOptions)
 }
